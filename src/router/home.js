@@ -1,8 +1,10 @@
+import moviesRouter from  './movies/index.js'
 export default [
 	{
 		path:'/movies',
 		name:'movies',
-		component: ()=>import('../views/movies/index.vue')
+		component: ()=>import('../views/movies/index.vue'),
+		children: moviesRouter
 	},
 	{
 		path:'/cniemas',
@@ -13,5 +15,10 @@ export default [
 		path:"/mine",
 		name:'mine',
 		component: ()=>import('../views/mine/index.vue')
+	},
+	{
+		path:"/*",
+		name:"redirect",
+		redirect:"/movies"
 	}
 ]
