@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "e013dc20-359c-438c-949c-0d7ddf1e5727",
+		"name": "票票",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取城市列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/citylist",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"citylist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "正在热映的电影",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/movieOnInfoList?cityId=10",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"movieOnInfoList"
+					],
+					"query": [
+						{
+							"key": "cityId",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "即将上映",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/movieComingList?cityId=10",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"movieComingList"
+					],
+					"query": [
+						{
+							"key": "cityId",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "搜素电影",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/searchList?cityId=10&kw=a",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"searchList"
+					],
+					"query": [
+						{
+							"key": "cityId",
+							"value": "10"
+						},
+						{
+							"key": "kw",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取当前城市的影院",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/cinemaList?cityId=10",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"cinemaList"
+					],
+					"query": [
+						{
+							"key": "cityId",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "电影详情",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://39.97.33.178/api/detailMovie?movieId=367835",
+					"protocol": "http",
+					"host": [
+						"39",
+						"97",
+						"33",
+						"178"
+					],
+					"path": [
+						"api",
+						"detailMovie"
+					],
+					"query": [
+						{
+							"key": "movieId",
+							"value": "367835"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
