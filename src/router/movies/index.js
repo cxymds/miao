@@ -18,10 +18,9 @@ export default [
 		path:'search',
 		name:'search',
 		component: ()=>import('../../views/movies/search.vue')
-	},
+	},	
 	{
-		path:'/',
+		path:'*',
 		redirect:'now'
 	}
-	
 ]

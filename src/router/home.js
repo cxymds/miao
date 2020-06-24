@@ -19,6 +19,6 @@ export default [
 	{
 		path:"/*",
 		name:"redirect",
-		redirect:"/movies"
+		redirect:"/movies/now"
 	}
 ]

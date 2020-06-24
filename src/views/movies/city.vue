@@ -4,80 +4,22 @@
 				<div class="city_hot">
 					<h2>热门城市</h2>
 					<ul class="clearfix">
-						<li>上海</li>
-						<li>北京</li>
-						<li>上海</li>
-						<li>北京</li>
-						<li>上海</li>
-						<li>北京</li>
-						<li>上海</li>
-						<li>北京</li>
+						<li v-for="city in citylist" :key="city['id']" v-show="city['isHot']">{{city['nm']}}</li>
 					</ul>
 				</div>
 				<div class="city_sort">
-					<div>
-						<h2>A</h2>
+					<div v-for="item in cityIndex" :key="item.index">
+						<h2>{{item.index}}</h2>
 						<ul>
-							<li>阿拉善盟</li>
-							<li>鞍山</li>
-							<li>安庆</li>
-							<li>安阳</li>
+							<li v-for="citt in item.list" :key="citt.id">{{citt.nm}}</li>
 						</ul>
 					</div>
-					<div>
-						<h2>B</h2>
-						<ul>
-							<li>北京</li>
-							<li>保定</li>
-							<li>蚌埠</li>
-							<li>包头</li>
-						</ul>
-					</div>
-					<div>
-						<h2>A</h2>
-						<ul>
-							<li>阿拉善盟</li>
-							<li>鞍山</li>
-							<li>安庆</li>
-							<li>安阳</li>
-						</ul>
-					</div>
-					<div>
-						<h2>B</h2>
-						<ul>
-							<li>北京</li>
-							<li>保定</li>
-							<li>蚌埠</li>
-							<li>包头</li>
-						</ul>
-					</div>
-					<div>
-						<h2>A</h2>
-						<ul>
-							<li>阿拉善盟</li>
-							<li>鞍山</li>
-							<li>安庆</li>
-							<li>安阳</li>
-						</ul>
-					</div>
-					<div>
-						<h2>B</h2>
-						<ul>
-							<li>北京</li>
-							<li>保定</li>
-							<li>蚌埠</li>
-							<li>包头</li>
-						</ul>
-					</div>	
 				</div>
 			</div>
+			
 			<div class="city_index">
 				<ul>
-					<li>A</li>
-					<li>B</li>
-					<li>C</li>
-					<li>D</li>
-					<li>E</li>
+					<li v-for="item in cityIndex">{{item.index}}</li>
 				</ul>
 			</div>
 		</div>
@@ -85,6 +27,60 @@
 </template>
 
 <script>
+export default {
+	data:function(){
+		return {
+			citylist:[],
+			cityIndex:[],
+		}
+	},
+	mounted:function(){
+		this.axios.get('/api/citylist').then(({data})=>{
+			this.citylist = data.data.cities;
+			this.resetCities(this.citylist);
+		})
+	},
+	// [
+	// 	{
+	// 		index:'A',
+	// 		list:[
+	// 			{cit},
+	// 			{cit},
+	// 			{cit},
+	// 			{cit},
+	// 		]
+	// 	},
+	// 	{},
+	// ]
+	methods:{
+		resetCities(cities){
+			for(let city=0;city< cities.length;city++){
+				let index = cities[city]['py'].substr(0,1).toUpperCase();  //首字母
+				let tag = false;
+				for(let i=0;i< this.cityIndex.length;i++){
+					if(index==this.cityIndex[i].index){
+						this.cityIndex[i]['list'].push(cities[city]);
+						tag = true;
+					}
+				}
+				if(tag==false){
+					this.cityIndex.push({
+						index:index,
+						list:[cities[city]]
+					});
+				}
+				
+			}
+			this.cityIndex.sort((a,b)=>{
+				if(a.index>b.index){
+					return 1
+				}else{
+					return -1;
+				}
+			})
+		}
+	}
+}
 </script>
 
 <style>
